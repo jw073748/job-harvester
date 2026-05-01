@@ -1,0 +1,35 @@
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.class
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Playwright / Selenium browser drivers (can be large)
+playwright/.cache/
+browser/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables / secrets (never commit these)
+.env
+.env.local
+
+# Logs
+*.log
+
+# IDE / Editor
+.vscode/
+.idea/
