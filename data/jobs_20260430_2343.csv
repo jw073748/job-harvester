@@ -1,0 +1,248 @@
+title,company,location,job_url,description,date_posted,job_type,is_remote,salary_min,salary_max,interval
+Software Engineering Senior Advisor - Hybrid,The Cigna Group,"St. Louis, MO, US",https://www.indeed.com/viewjob?jk=dce0f82602724a21,"Bring your technical leadership and passion for modern engineering to a role where your work directly improves how critical data and reporting platforms perform at scale. As a Senior Software Engineering Advisor, you will guide the evolution of enterprise reporting systems, modernize data platforms, and integrate AI\-enabled capabilities that increase reliability, speed, and developer productivity. You will lead through influence and expertise, partnering closely with engineering, product, and business stakeholders.
+
+**Responsibilities**
+
+* Lead the design, development, and modernization of enterprise reporting platforms, ETL pipelines, and data transformation solutions to deliver accurate, timely, and scalable outcomes.
+* Drive platform modernization initiatives, including migration from legacy environments to cloud\-based solutions such as Databricks and Snowflake.
+* Integrate AI\-enabled capabilities, including Python\-based services and retrieval\-augmented generation (RAG) and vector search solutions, to improve reliability, automation, and issue resolution.
+* Provide architectural leadership for high\-volume data processing and reporting systems, ensuring solutions are resilient, observable, and efficient.
+* Champion modern engineering practices, including Agile delivery, DevOps automation, and continuous improvement, to elevate quality and developer experience.
+* Partner with product, reporting, analytics, and business stakeholders to translate complex requirements into clear, actionable engineering solutions.
+* Guide production support, incident triage, and root\-cause analysis to strengthen operational stability and data trust.
+* Ensure adherence to enterprise engineering standards, security policies, and data governance requirements.
+* Communicate clearly with both technical and non\-technical audiences, providing transparency on progress, risks, and outcomes.
+
+**Required Qualifications**
+
+* Minimum of 10 years of experience in enterprise software or data engineering roles supporting large\-scale, client\-facing platforms.
+* Strong expertise in SQL, ETL frameworks, data modeling, and cloud\-based data pipelines.
+* Hands\-on experience with platforms such as AWS, Snowflake, Databricks, Teradata, or enterprise BI and reporting tools.
+* Proven ability to support production systems, optimize performance, and improve reliability.
+* Experience working in Agile environments and collaborating with cross\-functional teams.
+* Healthcare industry experience is required; PBM or PBS experience is strongly preferred.
+* Strong communication and partnership skills, with the ability to influence without direct authority.
+
+**Preferred Qualifications**
+
+* Experience building or supporting AI/ML solutions using Python.
+* Familiarity with retrieval\-augmented generation (RAG) architectures and vector search technologies.
+* Experience supporting mainframe or batch processing environments.
+* Bachelor’s degree in Computer Science, Engineering, or a related field is preferred, or equivalent practical experience.
+
+  
+
+
+If you will be working at home occasionally or permanently, the internet connection must be obtained through a cable broadband or fiber optic internet service provider with speeds of at least 10Mbps download/5Mbps upload.
+For this position, we anticipate offering an annual salary of 130,200 \- 217,000 USD / yearly, depending on relevant factors, including experience and geographic location.
+This role is also anticipated to be eligible to participate in an annual bonus plan.
+
+
+At The Cigna Group, you’ll enjoy a comprehensive range of benefits, with a focus on supporting your whole health. Starting on day one of your employment, you’ll be offered several health\-related benefits including medical, vision, dental, and well\-being and behavioral health programs. We also offer 401(k), company paid life insurance, tuition reimbursement, a minimum of 18 days of paid time off per year and paid holidays. For more details on our employee benefits programs, click here.
+
+
+**About The Cigna Group**
+
+Doing something meaningful starts with a simple decision, a commitment to changing lives. At The Cigna Group, we’re dedicated to improving the health and vitality of those we serve. Through our divisions Cigna Healthcare and Evernorth Health Services, we are committed to enhancing the lives of our clients, customers and patients. Join us in driving growth and improving lives.*Qualified applicants will be considered without regard to race, color, age, disability, sex, childbirth (including pregnancy) or related medical conditions including but not limited to lactation, sexual orientation, gender identity or expression, veteran or military status, religion, national origin, ancestry, marital or familial status, genetic information, status with regard to public assistance, citizenship status or any other characteristic protected by applicable equal employment opportunity laws.*
+
+*If you need a reasonable accommodation to complete the online application process, please email* ***seeyourself@thecignagroup.com*** *for assistance. Please note that this email inbox is dedicated to accommodation requests only and cannot provide application updates or accept resumes.*
+
+*The Cigna Group has a tobacco\-free policy and reserves the right not to hire tobacco/nicotine users in states where that is legally permissible. Candidates in such states who use tobacco/nicotine will not be considered for employment unless they enter a qualifying smoking cessation program prior to the start of their employment. These states include: Alabama, Alaska, Arizona, Arkansas, Delaware, Florida, Georgia, Hawaii, Idaho, Iowa, Kansas, Maryland, Massachusetts, Michigan, Nebraska, Ohio, Pennsylvania, Texas, Utah, Vermont, and Washington State.*
+
+*Qualified applicants with criminal histories will be considered for employment in a manner* *consistent with all federal, state and local ordinances.*",2026-04-30,fulltime,False,130200.0,217000.0,yearly
+AI Engineer / Data Scientist,Vibotek LLC,"St. Louis, MO, US",https://www.indeed.com/viewjob?jk=08d6323e8d4d4853,"**Role Overview**
+=================
+
+
+Seeking a strong Lead Engineer to drive architecture, design, and development of a cloud\-native, configuration\-driven, event\-based platform supporting healthcare payer workflows and Payment Integrity systems.
+
+
+**Key Responsibilities:**
+-------------------------
+
+
+* Lead end\-to\-end engineering initiatives
+* Provide architectural guidance and hands\-on development
+* Build scalable metadata\-driven and rule\-engine systems
+* Collaborate with product, architecture, and business teams
+* Mentor developers and enforce engineering best practices
+
+**Required Skills:**
+
+
+* 8\+ years in software engineering
+* Strong expertise in Python or Java
+* Experience with configuration\-driven platforms and rule engines
+* Strong SQL \& NoSQL database knowledge
+* Kafka and event\-driven architecture experience
+* AWS services: EKS, ECS, Lambda, S3, RDS, DynamoDB
+* CI/CD, Docker, Kubernetes, GitOps
+* Healthcare domain expertise with Payment Integrity focus
+
+**Preferred Experience:**
+
+
+* Autonomous agents
+* Tool\-calling workflows
+* Multi\-agent architectures
+* Local/private AI deployments
+* Advanced AI reasoning \& orchestration
+* Hands\-on experience with modern AI models like Qwen, Gemma, Llama, Claude, Gemini, Codex, etc.
+* Kafka and Payment Integrity experience are mandatory
+
+**Key** **Skills:**
+
+
+* Python, Oracle, Kafka, Windsurf/GitHub Copilot/Cursor, Payment Integrity Platforms",2026-04-30,fulltime,False,,,
+Lead Site Reliability Engineer-2,Mastercard,"O'Fallon, MO, US",https://www.indeed.com/viewjob?jk=8ff1aa3dc4765357,"**Our Purpose**
+
+*Mastercard powers economies and empowers people in 200\+ countries and territories worldwide. Together with our customers, we’re helping build a sustainable economy where everyone can prosper. We support a wide range of digital payments choices, making transactions secure, simple, smart and accessible. Our technology and innovation, partnerships and networks combine to deliver a unique set of products and services that help people, businesses and governments realize their greatest potential.*
+
+**Title and Summary**
+
+
+Lead Site Reliability Engineer\-2
+Overview:  
+
+  
+
+Who is Mastercard?At Mastercard technology, we work to connect and power an inclusive, digital economy that benefits everyone, everywhere, by making transactions safe, simple, smart, and accessible. Using secure data and networks, partnerships, and passion, our innovations and solutions help individuals, financial institutions, governments, and businesses realize their greatest potential. Our decency quotient, or DQ, drives our culture and everything we do inside and outside of our company. We cultivate a culture of inclusion for all employees that respects their individual strengths, views, and experiences. We believe that our differences enable us to be a better team – one that makes better decisions, drives innovation, and delivers better business results.Technology at MastercardWhat we create today will define tomorrow. Revolutionary technologies that reshape the digital economy to be more connected and inclusive than ever before. Safer, faster, more sustainable. And we need the best people to do it. Technologists who are energized by the challenges of a truly global network. With the talent and vision to create the critical systems and products that power global commerce and connect people everywhere to the vital goods and services they need every day.Working at Mastercard means being part of a unique culture. Inclusive and diverse, a rich collaboration of ideas and perspectives. A place that celebrates your strengths, values your experiences, and offers you the flexibility to shape a career across disciplines and continents. And the opportunity to work alongside experts and leaders at every level of the business, improving what exists, and inventing what’s next.  
+
+  
+
+Role:  
+
+The Business Operations (Biz Ops) team is seeking a Business Operations Site Reliability Engineer (SRE)The role of Business Operations Organization is to be the production readiness steward for Mastercard products. As a Business Operations SRE, we are responsible for ensuring that our platform is stable and healthy. We break down barriers to run our products by fostering developer run ownership and empowering developers to build resilient products. We support our developers during the application build phase in software run principals that includes operational design, automation, capacity planning, monitoring that leads to fault\-tolerant, scalable products. We see the big picture and help create and enforce operations standards while facilitating an agile and learning culture. We are seeking a highly motivated and experienced Lead Site Reliability Engineer (SRE) to join our growing team. You will play a critical role in ensuring the reliability, scalability, and performance of our Java, Spring Framework applications, supporting essential services that power Mastercard's global operations. As a leader thought leader in your field, you will bring technical expertise, a passion for automation, and the ability to mentor and guide less experienced junior engineers. We support daily operations with a hyper focus on triage, root cause by understanding the business impact of our products and subsequently performing blameless post\-mortems. The goal of every Business Operations team is to engage early in the development lifecycle to be more proactive and upfront in the development process, and to proactively manage production and change activities to maximize customer experience and increase the overall value of supported applications. Business Operations teams also focus on risk management by tying all our activities together with an overarching responsibility for compliance and risk mitigation across all our environments. Ultimately, the role of Business Operations is to align Product and Customer Focused priorities with Operational needs by providing continuous feedback throughout the lifecycle.  
+
+  
+
+All about you\-Team Specific Skills:  
+
+Biz Ops engineers engage in various roles:\- Operational Readiness Architect: Ensure application health, performance, and capacity; support pre\-launch activities.\- Site Reliability Engineering: Design resilient infrastructure, perform root cause analysis, and automate alerts.\- DevOps/Automation: Improve service lifecycle, support CI/CD pipelines, and reduce manual intervention.\- ITSM Practices: Analyze platform activities and provide feedback to development teams.Role qualifications:Ideal candidates have:\- BS in Computer Science or related field.\- Proficiency in Java, Spring Framework, Python, or Go.\- Strong DevOps and configuration management skills.\-  
+
+  
+
+Experience with distributed systems and automation.\- Problem\-solving, communication, and leadership abilities.\- Passion for observability and continuous improvement.\- Willingness to learn and collaborate across teams.
+Mastercard is a merit\-based, inclusive, equal opportunity employer that considers applicants without regard to gender, gender identity, sexual orientation, race, ethnicity, disabled or veteran status, or any other characteristic protected by law. We hire the most qualified candidate for the role. In the US or Canada, if you require accommodations or assistance to complete the online application process or during the recruitment process, please contact reasonable\_accommodation@mastercard.com and identify the type of accommodation or assistance you are requesting. Do not include any medical or health information in this email. The Reasonable Accommodations team will respond to your email promptly.**Corporate Security Responsibility**
+
+  
+
+All activities involving access to Mastercard assets, information, and networks comes with an inherent risk to the organization and, therefore, it is expected that every person working for, or on behalf of, Mastercard is responsible for information security and must:
+
+* Abide by Mastercard’s security policies and practices;
+* Ensure the confidentiality and integrity of the information being accessed;
+* Report any suspected information security violation or breach, and
+* Complete all periodic mandatory security trainings in accordance with Mastercard’s guidelines.
+
+
+In line with Mastercard’s total compensation philosophy and assuming that the job will be performed in the US, the successful candidate will be offered a competitive base salary and may be eligible for an annual bonus or commissions depending on the role. The base salary offered may vary depending on multiple factors, including but not limited to location, job\-related knowledge, skills, and experience. Mastercard benefits for full time (and certain part time) employees generally include: insurance (including medical, prescription drug, dental, vision, disability, life insurance); flexible spending account and health savings account; paid leaves (including 16 weeks of new parent leave and up to 20 days of bereavement leave); 80 hours of Paid Sick and Safe Time, 25 days of vacation time and 5 personal days, pro\-rated based on date of hire; 10 annual paid U.S. observed holidays; 401k with a best\-in\-class company match; deferred compensation for eligible roles; fitness reimbursement or on\-site fitness facilities; eligibility for tuition reimbursement; and many more. Mastercard benefits for interns generally include: 56 hours of Paid Sick and Safe Time; jury duty leave; and on\-site fitness facilities in some locations.**Pay Ranges**
+
+
+O'Fallon, Missouri: $122,000 \- $207,000 USD",2026-04-29,fulltime,False,122000.0,207000.0,yearly
+Senior Developer (Security) - Hybrid,Netrist,"Scott AFB, IL, US",https://www.indeed.com/viewjob?jk=a51467896e42d5cb,"### **Job Information**
+
+
+Date Opened
+
+
+**04/29/2026**Job Type
+
+
+**Full time**Work Experience
+
+
+**6\+ Years**Industry
+
+
+**Technology**City
+
+
+**Scott Air Force Base**State/Province
+
+
+**Illinois**Country
+
+
+**United States**Zip/Postal Code
+
+
+**62225**### **Job Description**
+
+
+We are seeking a Senior Full Stack Developer (Security Emphasis) to support development and sustainment efforts within secure DoW cloud environments, including mission systems supporting the Mobility Air Forces. This role focuses on designing and developing backend services that implement Zero Trust Architecture controls aligned with NIST SP 800\-207 and the DoW Zero Trust Strategy within AWS GovCloud IL5 and IL6 environments.
+
+  
+
+You will operate within an Agile environment and mentor junior developers. This role emphasizes building robust backend services that enable Zero Trust enforcement, while also contributing to reliability, security, and performance of mission\-critical software.### **What you will do**
+
+* Design, implement, test, and deploy backend features using Java and .NET in AWS  
+
+GovCloud including Zero Trust Architecture patterns aligned to NIST SP 800\-207\.
+* Lead the development of RESTful services, API endpoints, and backend integration  
+
+patterns.
+* Architect and implement microservices, serverless functions, and containerized workloads using AWS services such as Lambda, ECS, EKS, Fargate, and API Gateway.
+* Build and optimize data models, SQL queries, and relational database operations.
+* Participate in architecture reviews, design sessions, and backlog refinement.
+* Conduct code reviews and refactor existing backend components for scalability, maintainability, and security.
+* Integrate backend services into CI/CD pipelines with automated builds, tests, and scans.
+* Ensure secure coding practices and interpret output from static and dynamic security analysis tools.
+* Use scripting languages, including Python and Bash, to automate operational and deployment tasks.
+* Troubleshoot complex backend issues across application logic, integrations, data stores, and cloud resources.
+* Mentor team members in API design, backend architecture, and secure coding patterns.
+* Engineer identity\-centric access controls using SAML, OIDC, OAuth2, and mTLS.
+* Implement Policy Enforcement Points and Policy Decision Points.
+* Support RMF documentation and ATO processes.
+
+### **What we like to see**
+
+* Experience implementing Zero Trust principles in **DoW** environments.
+* Strong AWS IAM and Kubernetes security experience.
+* Ability to work with minimal direction.
+* Strong documentation and architecture communication skills.
+* Proficiency with AWS cloud computing environments.
+* In depth knowledge of Java and the ability to also code in .NET languages.
+* Ability to troubleshoot code at a senior level.
+* Able to work with minimal day\-to\-day direction when collaborating with a small team.
+* Knows when to ask for help when blocked and knows when to help others when they are blocked.
+
+### **You should be familiar with**
+
+* AWS Cloud (EC2, IAM, CloudWatch)
+* Kubernetes security and service mesh
+* NIST 800\-53 and RMF processes
+* DevSecOps pipeline integration
+* Linux, Python, or Bash scripting
+* Cloud (AWS)
+* Containerization and virtualization technologies like Docker
+* Agile methodology
+* Experience with SQL scripts and relational database operations
+
+  
+
+This position seeks candidates for remote work in the St. Louis area.
+
+### **Requirements**
+
+* Minimum Experience: 5\+ years (including at least 3 years in Java development).
+* Minimum Education: Bachelor’s degree in computer science, Engineering, or related field.
+* Security\+ required. CISSP or AWS Architect certifications are desired.
+* Ability to obtain and maintain a government security clearance; U.S. citizenship required.
+* DoD or federal government experience preferred.
+
+### **Benefits**
+
+* Paid Time Off
+* Medical benefits: Health Care, Vision, Dental, Long and Short Term Disability, and Life Insurance
+* Dependent Care and Healthcare Flexible Spending Accounts
+* Annual Health Reimbursement Arrangement
+* Education Assistance Program
+* 401(k) Plan",2026-04-29,fulltime,True,,,
+"Full Stack Engineer, Lead - Tax Transformation",Deloitte,"St Louis, MO",https://www.linkedin.com/jobs/view/4408595485,,2026-04-30,,False,,,
+"Full Stack Engineer, AI Team",Avantos.ai,"St Louis, MO",https://www.linkedin.com/jobs/view/4408515136,,2026-04-29,,False,,,
+Analytics Engineer / Data Scientist (Full Stack),Awetomaton Ltd,"St Louis, MO",https://www.linkedin.com/jobs/view/4408555600,,2026-04-29,,False,,,
+Full Stack Engineer,Brooksource,,https://www.linkedin.com/jobs/view/4406993711,,2026-04-29,,False,,,
+"Senior Software Engineer, Fullstack (Consumer Engineering)",Affirm,"St Louis, MO",https://www.linkedin.com/jobs/view/4386882097,,,,False,,,
+"Staff Software Engineer, Backend (Growth Platform)",Affirm,"St Louis, MO",https://www.linkedin.com/jobs/view/4354770431,,,,False,,,
+Sr. Full Stack AI Developer,World Wide Technology,"Maryland Heights, MO",https://www.linkedin.com/jobs/view/4407664320,,,,False,,,
+Senior Python Developer,ArchKey Solutions,"Fenton, MO",https://www.linkedin.com/jobs/view/4386731082,,,,False,,,
