@@ -2,52 +2,62 @@ from jobspy import scrape_jobs
 import pandas as pd
 from datetime import datetime
 import os
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
-# Configuration
 os.makedirs('data', exist_ok=True)
 
+# ================== CONFIGURATION ==================
+SEARCH_TERMS = [
+    "Network Engineer",
+    "VoIP Engineer",
+    "Voice Engineer",
+    "Network Operations",
+    "Service Assurance",
+    "NOC Engineer",
+    "Telecom Engineer",
+    "Network Automation",
+    "Python Network",
+    "SIP Engineer"
+]
+
+LOCATION = "Saint Charles, MO"
+RESULTS_WANTED = 20
+HOURS_OLD = 72
+# ===================================================
+
 def main():
-    print("🚀 Starting Job Harvester...\n")
-    
-    # Customize these as needed
-    search_terms = [
-        "VoIP Support",
-        "VoIP Engineer",
-        "Telecommunications Engineer",
-        "Network Engineer",
-        "Telecom Support"
-    ]
+    print("🚀 Starting Targeted Job Harvester for Network/VoIP Roles...\n")
     
     jobs_list = []
     
-    for term in search_terms:
+    for term in SEARCH_TERMS:
         print(f"Searching for: {term} ...")
         
         jobs = scrape_jobs(
             site_name=["indeed", "linkedin"],
             search_term=term,
-            location="Saint Charles, MO",
-            results_wanted=15,
-            hours_old=72,                    # Last 3 days
-            country_indeed='USA',
-            is_remote=False                  # Set True if you want remote only
+            location=LOCATION,
+            results_wanted=RESULTS_WANTED,
+            hours_old=HOURS_OLD,
+            country_indeed='USA'
         )
         
         if jobs is not None and len(jobs) > 0:
             jobs_list.append(jobs)
-            print(f"   → Found {len(jobs)} jobs for '{term}'")
+            print(f"   → Found {len(jobs)} jobs")
+        else:
+            print(f"   → No jobs found for '{term}'")
     
     if not jobs_list:
-        print("No jobs found across all searches.")
+        print("No jobs found.")
         return
     
-    # Combine all results
+    # Combine results safely
     df = pd.concat(jobs_list, ignore_index=True)
-    
-    # Remove duplicate jobs based on job_url
     df = df.drop_duplicates(subset=['job_url'], keep='first')
     
-    # Select and rename useful columns
+    # Select available columns
     columns = ['title', 'company', 'location', 'job_url', 'description', 
                'date_posted', 'job_type', 'is_remote']
     
@@ -57,28 +67,23 @@ def main():
             columns.append(col)
     
     df = df[[col for col in columns if col in df.columns]]
+    df = df.rename(columns={'min_amount': 'salary_min', 'max_amount': 'salary_max'})
     
-    df = df.rename(columns={
-        'min_amount': 'salary_min',
-        'max_amount': 'salary_max'
-    })
-    
-    # Save results
+    # Save
     timestamp = datetime.now().strftime('%Y%m%d_%H%M')
-    filename = f"data/jobs_{timestamp}.csv"
+    filename = f"data/jobs_network_{timestamp}.csv"
     df.to_csv(filename, index=False)
     
-    print("\n" + "="*60)
+    print("\n" + "="*70)
     print(f"✅ SUCCESS: Found {len(df)} unique jobs!")
     print(f"📁 Saved to: {filename}")
-    print("="*60)
+    print("="*70)
     
-    # Show summary
-    print("\nTop 8 Jobs:")
+    print("\nTop 10 Jobs:")
     display_cols = ['title', 'company', 'location']
     if 'salary_min' in df.columns:
-        display_cols += ['salary_min']
-    print(df[display_cols].head(8).to_string(index=False))
+        display_cols.append('salary_min')
+    print(df[display_cols].head(10).to_string(index=False))
 
 if __name__ == "__main__":
     main()
