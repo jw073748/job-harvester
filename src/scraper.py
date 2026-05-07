@@ -4,7 +4,6 @@ from datetime import datetime
 import os
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-
 os.makedirs('data', exist_ok=True)
 
 # ================== CONFIGURATION ==================
@@ -16,74 +15,90 @@ SEARCH_TERMS = [
     "Service Assurance",
     "NOC Engineer",
     "Telecom Engineer",
-    "Network Automation",
-    "Python Network",
     "SIP Engineer"
 ]
 
-LOCATION = "Saint Charles, MO"
+LOCATION = "Saint Louis, MO"
 RESULTS_WANTED = 20
 HOURS_OLD = 72
 # ===================================================
 
-def main():
-    print("🚀 Starting Targeted Job Harvester for Network/VoIP Roles...\n")
-    
-    jobs_list = []
-    
-    for term in SEARCH_TERMS:
-        print(f"Searching for: {term} ...")
-        
+def scrape(term, location, remote_only=False):
+    """Scrape jobs for a term/location combo, return DataFrame or None."""
+    label = "Remote" if remote_only else location
+    print(f"  Searching: '{term}' | {label} ...")
+    try:
         jobs = scrape_jobs(
             site_name=["indeed", "linkedin"],
             search_term=term,
-            location=LOCATION,
+            location=location,
             results_wanted=RESULTS_WANTED,
             hours_old=HOURS_OLD,
-            country_indeed='USA'
+            country_indeed='USA',
+            is_remote=remote_only,
         )
-        
         if jobs is not None and len(jobs) > 0:
-            jobs_list.append(jobs)
-            print(f"   → Found {len(jobs)} jobs")
+            print(f"    → {len(jobs)} jobs found")
+            return jobs
         else:
-            print(f"   → No jobs found for '{term}'")
-    
+            print(f"    → 0 jobs found")
+            return None
+    except Exception as e:
+        print(f"    → ERROR: {e}")
+        return None
+
+
+def main():
+    print("🚀 Starting Targeted Job Harvester for Network/VoIP Roles...\n")
+
+    jobs_list = []
+
+    for term in SEARCH_TERMS:
+        # Local search
+        local = scrape(term, LOCATION, remote_only=False)
+        if local is not None:
+            jobs_list.append(local)
+
+        # Remote search (is_remote=True filters for remote listings)
+        remote = scrape(term, LOCATION, remote_only=True)
+        if remote is not None:
+            jobs_list.append(remote)
+
     if not jobs_list:
-        print("No jobs found.")
+        print("\n❌ No jobs found across all searches.")
         return
-    
-    # Combine results safely
+
+    # Combine & deduplicate
     df = pd.concat(jobs_list, ignore_index=True)
     df = df.drop_duplicates(subset=['job_url'], keep='first')
-    
+
     # Select available columns
-    columns = ['title', 'company', 'location', 'job_url', 'description', 
+    columns = ['title', 'company', 'location', 'job_url', 'description',
                'date_posted', 'job_type', 'is_remote']
-    
-    salary_cols = ['min_amount', 'max_amount', 'interval']
-    for col in salary_cols:
+
+    for col in ['min_amount', 'max_amount', 'interval']:
         if col in df.columns:
             columns.append(col)
-    
+
     df = df[[col for col in columns if col in df.columns]]
     df = df.rename(columns={'min_amount': 'salary_min', 'max_amount': 'salary_max'})
-    
+
     # Save
     timestamp = datetime.now().strftime('%Y%m%d_%H%M')
     filename = f"data/jobs_network_{timestamp}.csv"
     df.to_csv(filename, index=False)
-    
+
     print("\n" + "="*70)
     print(f"✅ SUCCESS: Found {len(df)} unique jobs!")
     print(f"📁 Saved to: {filename}")
     print("="*70)
-    
+
     print("\nTop 10 Jobs:")
-    display_cols = ['title', 'company', 'location']
+    display_cols = ['title', 'company', 'location', 'is_remote']
     if 'salary_min' in df.columns:
         display_cols.append('salary_min')
     print(df[display_cols].head(10).to_string(index=False))
+
 
 if __name__ == "__main__":
     main()
