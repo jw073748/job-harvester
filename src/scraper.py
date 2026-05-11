@@ -3,102 +3,126 @@ import pandas as pd
 from datetime import datetime
 import os
 import warnings
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+from rich import box
+
 warnings.simplefilter(action='ignore', category=FutureWarning)
 os.makedirs('data', exist_ok=True)
 
-# ================== CONFIGURATION ==================
-SEARCH_TERMS = [
-    "Network Engineer",
-    "VoIP Engineer",
-    "Voice Engineer",
-    "Network Operations",
-    "Service Assurance",
-    "NOC Engineer",
-    "Telecom Engineer",
-    "SIP Engineer"
-]
+console = Console()
 
-LOCATION = "Saint Louis, MO"
-RESULTS_WANTED = 20
-HOURS_OLD = 72
+# ================== CONFIGURATION ==================
+CLEARANCE_KEYWORDS = ["clearance", "ts/sci", "secret clearance", "top secret", 
+                     "security clearance", "dod clearance", "polygraph"]
 # ===================================================
 
-def scrape(term, location, remote_only=False):
-    """Scrape jobs for a term/location combo, return DataFrame or None."""
-    label = "Remote" if remote_only else location
-    print(f"  Searching: '{term}' | {label} ...")
+def contains_clearance(text):
+    if not text:
+        return False
+    text_lower = str(text).lower()
+    return any(keyword in text_lower for keyword in CLEARANCE_KEYWORDS)
+
+def main():
+    console.print(Panel.fit("[bold cyan]🚀 Job Harvester - Interactive Mode[/bold cyan]", 
+                           subtitle="Network / VoIP / Telecom Focus", box=box.ROUNDED))
+    
+    # User Inputs
+    search_term = console.input("[bold]Enter job title / search term[/bold] (e.g. Network Engineer): ").strip()
+    if not search_term:
+        search_term = "Network Engineer"
+    
+    location = console.input("[bold]Enter location[/bold] (e.g. Saint Louis, MO or press Enter for nationwide): ").strip()
+    
+    try:
+        min_salary = int(console.input("[bold]Minimum salary[/bold] (e.g. 80000, Enter to skip): ") or 0)
+    except:
+        min_salary = 0
+    
+    try:
+        max_salary = int(console.input("[bold]Maximum salary[/bold] (e.g. 160000, Enter to skip): ") or 999999)
+    except:
+        max_salary = 999999
+
+    console.print(f"\n[bold green]Searching for:[/bold green] '{search_term}' | Location: {location or 'Anywhere'} | Salary: ${min_salary:,} - ${max_salary:,}\n")
+
     try:
         jobs = scrape_jobs(
             site_name=["indeed", "linkedin"],
-            search_term=term,
+            search_term=search_term,
             location=location,
-            results_wanted=RESULTS_WANTED,
-            hours_old=HOURS_OLD,
+            results_wanted=30,
+            hours_old=72,
             country_indeed='USA',
-            is_remote=remote_only,
         )
-        if jobs is not None and len(jobs) > 0:
-            print(f"    → {len(jobs)} jobs found")
-            return jobs
-        else:
-            print(f"    → 0 jobs found")
-            return None
+        
+        if jobs is None or len(jobs) == 0:
+            console.print("[bold red]❌ No jobs found.[/bold red]")
+            return
+            
+        df = pd.DataFrame(jobs)
+        df = df.drop_duplicates(subset=['job_url'], keep='first')
+        
+        # Filter clearance jobs
+        before = len(df)
+        df = df[~df.apply(lambda row: contains_clearance(row.get('title')) or 
+                                     contains_clearance(row.get('description')), axis=1)]
+        
+        if before - len(df) > 0:
+            console.print(f"[yellow]Excluded {before - len(df)} security clearance jobs[/yellow]")
+
+        # Salary filter
+        if min_salary > 0 or max_salary < 999999:
+            if 'min_amount' in df.columns:
+                df = df[(df['min_amount'].fillna(0) >= min_salary) & 
+                       (df['min_amount'].fillna(999999) <= max_salary)]
+
+        # Column selection
+        columns = ['title', 'company', 'location', 'job_url', 'description', 
+                   'date_posted', 'job_type', 'is_remote']
+        for col in ['min_amount', 'max_amount', 'interval']:
+            if col in df.columns:
+                columns.append(col)
+        
+        df = df[[col for col in columns if col in df.columns]]
+        df = df.rename(columns={'min_amount': 'salary_min', 'max_amount': 'salary_max'})
+
+        # Save
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M')
+        filename = f"data/jobs_{timestamp}.csv"
+        df.to_csv(filename, index=False)
+
+        # === Fancy Display ===
+        console.print(f"\n[bold green]✅ SUCCESS: Found {len(df)} matching jobs![/bold green]")
+        console.print(f"[dim]Saved to: {filename}[/dim]\n")
+
+        # Rich Table
+        table = Table(title="Top Matching Jobs", box=box.HEAVY_HEAD, show_lines=True)
+        table.add_column("Title", style="bold cyan", width=45)
+        table.add_column("Company", style="magenta", width=25)
+        table.add_column("Location", style="yellow", width=25)
+        table.add_column("Remote?", style="green")
+        table.add_column("Salary", style="green", justify="right")
+
+        for _, row in df.head(12).iterrows():
+            remote = "🌐 Yes" if row.get('is_remote') else "📍 No"
+            salary = f"${int(row.get('salary_min', 0)):,}" if pd.notna(row.get('salary_min')) else "-"
+            table.add_row(
+                row.get('title', ''),
+                row.get('company', ''),
+                row.get('location', ''),
+                remote,
+                salary
+            )
+
+        console.print(table)
+
+        if len(df) > 12:
+            console.print(f"[dim]... and {len(df)-12} more jobs in the CSV file[/dim]")
+
     except Exception as e:
-        print(f"    → ERROR: {e}")
-        return None
-
-
-def main():
-    print("🚀 Starting Targeted Job Harvester for Network/VoIP Roles...\n")
-
-    jobs_list = []
-
-    for term in SEARCH_TERMS:
-        # Local search
-        local = scrape(term, LOCATION, remote_only=False)
-        if local is not None:
-            jobs_list.append(local)
-
-        # Remote search (is_remote=True filters for remote listings)
-        remote = scrape(term, LOCATION, remote_only=True)
-        if remote is not None:
-            jobs_list.append(remote)
-
-    if not jobs_list:
-        print("\n❌ No jobs found across all searches.")
-        return
-
-    # Combine & deduplicate
-    df = pd.concat(jobs_list, ignore_index=True)
-    df = df.drop_duplicates(subset=['job_url'], keep='first')
-
-    # Select available columns
-    columns = ['title', 'company', 'location', 'job_url', 'description',
-               'date_posted', 'job_type', 'is_remote']
-
-    for col in ['min_amount', 'max_amount', 'interval']:
-        if col in df.columns:
-            columns.append(col)
-
-    df = df[[col for col in columns if col in df.columns]]
-    df = df.rename(columns={'min_amount': 'salary_min', 'max_amount': 'salary_max'})
-
-    # Save
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M')
-    filename = f"data/jobs_network_{timestamp}.csv"
-    df.to_csv(filename, index=False)
-
-    print("\n" + "="*70)
-    print(f"✅ SUCCESS: Found {len(df)} unique jobs!")
-    print(f"📁 Saved to: {filename}")
-    print("="*70)
-
-    print("\nTop 10 Jobs:")
-    display_cols = ['title', 'company', 'location', 'is_remote']
-    if 'salary_min' in df.columns:
-        display_cols.append('salary_min')
-    print(df[display_cols].head(10).to_string(index=False))
-
+        console.print(f"[bold red]Error:[/bold red] {e}")
 
 if __name__ == "__main__":
     main()
